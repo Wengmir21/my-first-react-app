@@ -1,16 +1,36 @@
-import Gallery from './Gallery.jsx';
-import Name from './Name.jsx';
-import { Profile } from './Profile.jsx';
-import { Bio } from './Bio.jsx';
+function Item({ name, isPacked }) {
+  let itemContent = name;
+  if (isPacked) {
+    itemContent = (<del>
+      {name + " ✔"}
+    </del>);
+  }
+ return (
+  <li className="item">
+    {itemContent}
+  </li>
+ );
+}
 
 
-export default function App() {
+export default function PackingList() {
   return (
-    <div>
-      <Profile />
-      <Gallery />
-      <Bio />
-      <Name />
-    </div>  
+    <section>
+      <h1>Sally Ride's Packing List</h1>
+      <ul>
+        <Item 
+          isPacked={true} 
+          name="Space suit" 
+        />
+        <Item 
+          isPacked={false} 
+          name="Helmet with a golden leaf" 
+        />
+        <Item 
+          isPacked={true} 
+          name="Photo of Tam" 
+        />
+      </ul>
+    </section>
   );
 }
